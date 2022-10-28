@@ -19,8 +19,8 @@ async function build() {
       `https://cdn.jsdelivr.net/npm/remixicon@${VERSION}/fonts/remixicon.symbol.svg`
     )
     data = response.data
-  } catch (err) {
-    return console.error('Failed to fetch SVG:', err)
+  } catch (error) {
+    return console.error('Failed to fetch SVG:', error)
   }
 
   document.body.innerHTML = data
@@ -66,7 +66,7 @@ async function build() {
 
   try {
     writeFileSync('./out.js', jsString)
-  } catch (err) {
-    return console.error('Failed to write file:', err)
+  } catch (error) {
+    return console.error('Failed to write file:', error)
   }
 }

@@ -11,8 +11,6 @@ const VERSION = '2.5.0'
 build()
 
 async function build() {
-  const { document } = new Window()
-
   let data
   try {
     const response = await axios.get(
@@ -23,6 +21,7 @@ async function build() {
     return console.error('Failed to fetch SVG:', error)
   }
 
+  const { document } = new Window()
   document.body.innerHTML = data
 
   const svg = document.querySelector('svg')

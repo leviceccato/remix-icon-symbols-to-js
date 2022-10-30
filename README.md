@@ -2,7 +2,13 @@
 
 Simple script to generate JS constants from Remix Icon SVG symbols.
 
+## Requirements
+
+- Node 16
+
 ## Usage
+
+`npm i`
 
 `npm run build`
 

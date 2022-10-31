@@ -4,8 +4,8 @@ import { Window } from 'happy-dom'
 
 // Configuration
 
-const VERSION = '2.5.0'
-const ICONS_TO_EXPORT = []
+const version = '2.5.0'
+const iconsToExport = new Set([])
 
 // Setup
 
@@ -15,7 +15,7 @@ async function build() {
   let data
   try {
     const response = await axios.get(
-      `https://cdn.jsdelivr.net/npm/remixicon@${VERSION}/fonts/remixicon.symbol.svg`
+      `https://cdn.jsdelivr.net/npm/remixicon@${version}/fonts/remixicon.symbol.svg`
     )
     data = response.data
   } catch (error) {
@@ -49,7 +49,7 @@ async function build() {
 
     return {
       id: symbol.id,
-      isExported: ICONS_TO_EXPORT.includes(symbol.id),
+      isExported: iconsToExport.has(symbol.id),
       html: element.innerHTML,
     }
   })
@@ -72,5 +72,5 @@ async function build() {
     return console.error('Failed to write file:', error)
   }
 
-  console.log('Successfully built file: out.js')
+  console.log('🎉 Successfully built file: out.js')
 }

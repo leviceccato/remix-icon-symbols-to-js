@@ -5,6 +5,7 @@ import { Window } from 'happy-dom'
 // Configuration
 
 const VERSION = '2.5.0'
+const ICONS_TO_EXPORT = []
 
 // Setup
 
@@ -48,6 +49,7 @@ async function build() {
 
     return {
       id: symbol.id,
+      isExported: ICONS_TO_EXPORT.includes(symbol.id),
       html: element.innerHTML,
     }
   })
@@ -57,8 +59,9 @@ async function build() {
   const symbolConsts = symbolData.map(datum => {
     const jsSafeName = datum.id.replaceAll('-', '_')
     const trimmedHtml = datum.html.trim()
+    const prefix = datum.isExported ? 'export const' : 'const'
 
-    return `const ${jsSafeName} = \`${trimmedHtml}\``
+    return `${prefix} ${jsSafeName} = \`${trimmedHtml}\``
   })
 
   const jsString = symbolConsts.join('\n\n')

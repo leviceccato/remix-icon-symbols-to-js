@@ -7,11 +7,11 @@ import { Window } from 'happy-dom'
 const version = '2.5.0'
 const iconsToExport = new Set([])
 
-// Setup
+// Main program
 
-build()
+main()
 
-async function build() {
+async function main() {
   let data
   try {
     const response = await axios.get(

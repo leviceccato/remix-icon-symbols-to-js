@@ -68,4 +68,6 @@ async function build() {
   } catch (error) {
     return console.error('Failed to write file:', error)
   }
+
+  console.log('Successfully built file: out.js')
 }
